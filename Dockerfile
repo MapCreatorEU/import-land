@@ -21,4 +21,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
-CMD ["./import-coastlines.sh"]
+CMD ["./import-land.sh"]

@@ -3,7 +3,7 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-readonly WATER_POLYGONS_FILE="$IMPORT_DATA_DIR/land_polygons.shp"
+readonly LAND_POLYGONS_FILE="$IMPORT_DATA_DIR/land_polygons.shp"
 
 function exec_psql() {
     PGPASSWORD=$POSTGRES_PASSWORD psql --host="$POSTGRES_HOST" --port="$POSTGRES_PORT" --dbname="$POSTGRES_DB" --username="$POSTGRES_USER"
@@ -38,7 +38,7 @@ function generalize_water() {
 function import_land() {
     local table_name="osm_land_polygon"
     drop_table "$table_name"
-    import_shp "$WATER_POLYGONS_FILE" "$table_name"
+    import_shp "$LAND_POLYGONS_FILE" "$table_name"
 
     local gen1_table_name="osm_land_polygon_gen1"
     drop_table "$gen1_table_name"
